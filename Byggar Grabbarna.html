@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Byggar Grabbarna – snickare</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --pine:#1f3a2e; --pencil:#f2b705; --birch:#eef0ea; --ink:#23272b; --sub:#4d555c; --line:#c9cfc4;
+  --bg:var(--birch); --fg:var(--ink); --muted:var(--sub); --panel:#e2e6dc;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#171d1a;--fg:#e9ece5;--muted:#aab3ab;--panel:#202923;--line:#34403a;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#171d1a;--fg:#e9ece5;--muted:#aab3ab;--panel:#202923;--line:#34403a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.125rem/1.6 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pencil);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+
+/* tumstocken: gul list med mått */
+.rule{height:2.25rem;background:
+  repeating-linear-gradient(90deg,#23272b 0 1.5px,transparent 1.5px 10px) bottom/100% 35% no-repeat,
+  repeating-linear-gradient(90deg,#23272b 0 1.5px,transparent 1.5px 50px) bottom/100% 65% no-repeat,
+  var(--pencil)}
+
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem;gap:1rem;flex-wrap:wrap}
+.logo{font:800 1.25rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+nav{display:flex;gap:1.25rem}
+nav a{text-decoration:none;font-weight:600}
+nav a:hover{text-decoration:underline;text-decoration-color:var(--pencil);text-decoration-thickness:3px;text-underline-offset:4px}
+
+.hero{padding:3rem 0 4rem}
+.hero h1{font-size:clamp(3.2rem,13vw,9rem);font-weight:800;letter-spacing:-.03em}
+.hero h1 span{display:block}
+.hero h1 .b{background:linear-gradient(transparent 62%,var(--pencil) 62% 92%,transparent 92%);width:fit-content}
+.hero p{max-width:34rem;margin:1.5rem 0 2rem;color:var(--muted);font-size:1.25rem}
+.btn{display:inline-block;background:var(--pine);color:#fff;font-weight:600;padding:.9rem 1.5rem;border-radius:3px;text-decoration:none;border:2px solid var(--pine)}
+.btn:hover{background:transparent;color:var(--fg);border-color:var(--fg)}
+.btn.alt{background:transparent;color:var(--fg);border-color:var(--fg);margin-left:.5rem}
+.btn.alt:hover{background:var(--fg);color:var(--bg)}
+
+section{padding:3.5rem 0;border-top:2px solid var(--line)}
+h2{font-size:clamp(2rem,6vw,3.25rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1.5rem}
+
+.jobs{list-style:none;margin:0;padding:0}
+.jobs li{display:grid;grid-template-columns:minmax(0,1fr);gap:.25rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.jobs h3{font-size:1.5rem;font-weight:500}
+.jobs p{margin:0;color:var(--muted);max-width:40rem}
+@media(min-width:44rem){.jobs li{grid-template-columns:18rem 1fr;gap:2rem;align-items:baseline}}
+
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:1.25rem}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start}
+.steps li::before{content:counter(s);font:800 1.5rem "Bricolage Grotesque",sans-serif;background:var(--pencil);color:#23272b;width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:3px}
+.steps strong{display:block;font-size:1.2rem}
+.steps span{color:var(--muted)}
+@media(min-width:44rem){.steps{grid-template-columns:repeat(4,1fr)}.steps li{grid-template-columns:1fr}}
+
+.contact{background:var(--pine);color:#f3f5ef;border-top:0}
+.contact h2{color:#fff}
+.contact .big{font:800 clamp(1.8rem,6vw,3rem) "Bricolage Grotesque",sans-serif;display:block;margin:.25rem 0;text-decoration-color:var(--pencil);text-decoration-thickness:4px;text-underline-offset:6px}
+.contact p{margin:.25rem 0;color:#cfd8cf}
+footer{padding:1.5rem 0;color:var(--muted);font-size:1rem}
+
+@media(prefers-reduced-motion:no-preference){
+  .hero h1 .b{background-size:0 100%;background-repeat:no-repeat;animation:mark .9s .3s ease-out forwards}
+  @keyframes mark{to{background-size:100% 100%}}
+}
+</style>
+</head>
+<body>
+<div class="rule" aria-hidden="true"></div>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Byggar Grabbarna</a>
+    <nav aria-label="Huvudmeny">
+      <a href="#tjanster">Tjänster</a>
+      <a href="#sa-jobbar-vi">Så jobbar vi</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1><span>Byggar</span><span class="b">Grabbarna</span></h1>
+    <p>Snickare som mäter två gånger och bygger en. Altaner, kök, garderober och renoveringar för dig som vill ha det gjort ordentligt.</p>
+    <a class="btn" href="#kontakt">Be om offert</a><a class="btn alt" href="#tjanster">Se vad vi bygger</a>
+  </div>
+
+  <section id="tjanster">
+    <div class="wrap">
+      <h2>Det här bygger vi</h2>
+      <ul class="jobs">
+        <li><h3>Altaner och trädäck</h3><p>Från liten balkong till stor altan med trappa och räcke.</p></li>
+        <li><h3>Kök och badrum</h3><p>Stommar, luckor, bänkskivor och snickerier som sitter rakt.</p></li>
+        <li><h3>Garderober och inredning</h3><p>Måttbyggda lösningar för hall, sovrum och under snedtak.</p></li>
+        <li><h3>Tillbyggnad och renovering</h3><p>Nya väggar, golv, innertak och rum i huset.</p></li>
+        <li><h3>Dörrar och fönster</h3><p>Byte, justering och infodring.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sa-jobbar-vi">
+    <div class="wrap">
+      <h2>Så jobbar vi</h2>
+      <ol class="steps">
+        <li><div><strong>Du hör av dig</strong><span>Berätta vad du vill ha gjort.</span></div></li>
+        <li><div><strong>Vi kommer och mäter</strong><span>Du får en tydlig offert med pris.</span></div></li>
+        <li><div><strong>Vi bygger</strong><span>Vi håller tiderna och håller rent.</span></div></li>
+        <li><div><strong>Du blir nöjd</strong><span>Vi går igenom jobbet tillsammans.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact">
+    <div class="wrap">
+      <h2>Ring eller mejla</h2>
+      <a class="big" href="tel:+46700000000">070-000 00 00</a>
+      <a class="big" href="mailto:info@byggargrabbarna.se">info@byggargrabbarna.se</a>
+      <p>Vi svarar samma dag på vardagar.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Byggar Grabbarna</div></footer>
+</body>
+</html>
